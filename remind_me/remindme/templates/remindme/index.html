@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remind me</title>
+</head>
+<body>
+    <h1>Remind Me Later</h1>
+    <p>Gaming License Addition</p>
+
+    {% if employee_list %}
+    {% for emp in employee_list %}
+        <h3>{{ emp.first_name }} {{ emp.last_name }}</h3>
+        {% for lic in license_list %}
+            {% if lic.employee.id == emp.id %}
+            <ul>
+                <li>{{ lic.state }} || {{ lic.expiration }}</li>
+            </ul>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    {% else %}
+    <p>Nothing here.</p>
+    {% endif %}
+</body>
+</html>
